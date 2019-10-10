@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Infinity Background</title>
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="infinity-background.js"></script>
+
+        <style type="text/css">
+
+            html, body { width: 100vw; height: 100vh; overflow-x: hidden;}
+
+            .background-wrapper {
+                
+                background-image: url('background.jpg');
+                height: 90%;
+            }
+
+            .content {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                text-align: center;
+                color: white;
+                text-shadow: 2px 2px 2px black;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <section class="background-wrapper" infinity-background>        
+            <div class="content">                
+                <h1>Infinity Background</h1>
+            </div>
+        </section>  
+
+    </body>
+</html>

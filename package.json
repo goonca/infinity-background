@@ -1,0 +1,19 @@
+{
+  "name": "infinity-background",
+  "version": "1.0.0",
+  "description": "",
+  "main": "infinity-background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goonca/infinity-background.git"
+  },
+  "author": "goonca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goonca/infinity-background/issues"
+  },
+  "homepage": "https://github.com/goonca/infinity-background#readme"
+}
