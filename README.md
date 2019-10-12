@@ -15,7 +15,7 @@ add infinity-background.js into your page
 ## Example
 
 ```javascript
-<section style="background-image: url('background.jpg')" class="gonca-infinity-background">        
+<section style="background-image: url('background.jpg')" class="goonca-infinity-background">        
   <div>                
     <!-- content here -->
   </div>

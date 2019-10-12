@@ -142,6 +142,6 @@ $goonca.infinityBackground = function(props) {
 
 $(document).ready(() => {
 
-  $('.gonca-infinity-background')
+  $('.goonca-infinity-background')
     .each((i, obj) => (new $goonca.infinityBackground({target : $(obj)}).apply()));
 });
