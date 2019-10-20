@@ -15,6 +15,8 @@ $goonca.infinityBackground = function(props) {
   //variables to store background measure
   const measure = { _x : 0, _l : 0, _t : 0, _dl : 0, _dt : 0};
 
+  const $window = $(window);
+
   /**
   * _updatePositions()
   * Assign mouse x and y positions to the measure variable. 
@@ -58,16 +60,15 @@ $goonca.infinityBackground = function(props) {
   */
   const _mouseMove = e => {
 
-    body.css(
-      'left',
-      body.offset().left - _getPiexelsToMove(e, 'left')
-    );
+    const _leftMovement = body.offset().left - _getPiexelsToMove(e, 'left')
+    const _topMovement = body.offset().top - _getPiexelsToMove(e, 'top') - document.body.scrollTop;
+
+    if($window.width() < _leftMovement + body.get(0).offsetWidth)
+      body.css('left',  Math.min(_leftMovement, 0));
 
     //top position needs to considerate body scroll top position
-    body.css(
-      'top',
-      body.offset().top - _getPiexelsToMove(e, 'top') - document.body.scrollTop
-    );
+    if($window.height() < _topMovement + body.get(0).offsetHeight)
+      body.css('top', Math.min(_topMovement, 0));
 
     _updatePositions(e);
   }
@@ -101,6 +102,8 @@ $goonca.infinityBackground = function(props) {
     //store the target html content to be wrapped
     const contentHtml = props.target.html();
 
+    let bodyClass;
+
     //copying content to a new container
     props.target.html(
       $('<div/>')
@@ -114,7 +117,7 @@ $goonca.infinityBackground = function(props) {
         })
     ).prepend(
       //creating floating background
-      body = $('<div/>').css({
+      body = $('<div/>').css(bodyClass = {
         'background-image' : props.target.css('background-image'),
         'background-repeat': 'no-repeat',
         'background-position': 'center',
@@ -131,9 +134,14 @@ $goonca.infinityBackground = function(props) {
       'position' : 'relative'
     });
 
-    props.target
-      .on('mousemove', e => (setTimeout(_mouseMove.bind(this, e), DELAY)))
-      .on('mouseover', _mouseOver);
+    if(typeof window.orientation === 'undefined') {
+      
+      props.target
+        .on('mousemove', e => (setTimeout(_mouseMove.bind(this, e), DELAY)))
+        .on('mouseover', _mouseOver);
+
+      $window.on('resize', () => (body.css(bodyClass)));
+    }
   }  
 
   //public methods
